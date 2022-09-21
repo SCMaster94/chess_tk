@@ -62,7 +62,6 @@ class Board(dict):
             pass
         del self[p1]
         self[p2] = piece
-
     def complete_move(self, piece, dest, p1, p2):
         enemy = ('white' if piece.color == 'black' else 'black')
         if piece.color == 'black':
@@ -91,7 +90,6 @@ class Board(dict):
 
     def occupied(self, color):
         result = []
-
         for coord in iter(self.keys()):
             if self[coord].color == color:
                 result.append(coord)

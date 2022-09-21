@@ -29,8 +29,7 @@ def create_piece(piece, color='white'):
         piece = SHORT_NAME[piece.upper()]
     module = sys.modules[__name__]
     return module.__dict__[piece](color)
-
-
+    sys.modules[__name__].__dict__[piece](color)
 class Piece(object):
     def __init__(self, color):
         if color == 'black':
@@ -147,5 +146,7 @@ class Pawn(Piece):
             attack = beginningpos[0] + direction, beginningpos[1] + a
             if board.alpha_notation(attack) in board.occupied(enemy):
                 allowed_moves.append(attack)
+         
         allowed_moves = filter(board.is_on_board, allowed_moves)
         return map(board.alpha_notation, allowed_moves)
+        
